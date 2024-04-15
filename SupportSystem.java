@@ -37,6 +37,10 @@ public class SupportSystem
         boolean finished = false;
 
         printWelcome();
+        // String hi = new String ("1      1");
+        // hi.replaceAll("\t", "");
+        // hi.trim();
+        // System.out.println(hi);
 
         while(!finished) {
             HashSet<String> input = reader.getInput();

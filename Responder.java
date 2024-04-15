@@ -126,8 +126,15 @@ public class Responder
         try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
             String response = reader.readLine();
             while(response != null) {
-                defaultResponses.add(response);
-                response = reader.readLine();
+                if(response.trim().isEmpty())
+                {
+                    response = reader.readLine();
+                }
+                else
+                {
+                    defaultResponses.add(response);
+                    response = reader.readLine();
+                }
             }
         }
         catch(FileNotFoundException e) {
