@@ -75,21 +75,28 @@ public class Responder
             String response = reader.readLine();
             String next = reader.readLine();
             
-            while(key != null && next != null && response !=null)
-            {
-                if(!next.trim().isEmpty())
+            while(next !=null && key !=null)
+            {                
+                if(next.trim().isEmpty() )
                 {
-                    response +=next;
+                    //responseMap.put(key.trim(),response);
+                    String[] keyArray = key.split(",");
+                    for (String k :keyArray)
+                    {
+                        responseMap.put(k.trim(),response);
+                    }
+                    key = reader.readLine();
+                    response = reader.readLine();
                     next = reader.readLine();
                 }
-                else if (key.trim().isEmpty())
+                else if (!next.trim().isEmpty())
                 {
-                    key = reader.readLine();
-                }
-                else
-                {
-                    responseMap.put(key,response);
-                    key = reader.readLine();
+                    response+= " "+next;
+                    next = reader.readLine();
+                    if (next == null)
+                    {
+                        next = "";
+                    }
                 }
             }
         }
